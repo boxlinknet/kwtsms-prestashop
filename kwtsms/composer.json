@@ -1,0 +1,15 @@
+{
+    "name": "kwtsms/kwtsms-prestashop",
+    "description": "kwtSMS - SMS Notifications & Alerts for PrestaShop",
+    "type": "prestashop-module",
+    "license": "AFL-3.0",
+    "require": {
+        "php": ">=7.4",
+        "kwtsms/kwtsms-php": "^1.0"
+    },
+    "autoload": {
+        "classmap": [
+            "classes/"
+        ]
+    }
+}
