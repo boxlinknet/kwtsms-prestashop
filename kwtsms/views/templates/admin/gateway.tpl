@@ -176,7 +176,7 @@
       <input type="text" class="form-control" readonly="readonly"
              value="{$cron_url|escape:'html':'UTF-8'}" id="kwtsms-cron-url" />
       <span class="input-group-btn">
-        <button type="button" class="btn btn-default" onclick="var el=document.getElementById('kwtsms-cron-url');el.select();document.execCommand('copy');">
+        <button type="button" class="btn btn-default" onclick="kwtsmsCopyCronUrl(this); return false;">
           <i class="icon-copy"></i> Copy
         </button>
       </span>

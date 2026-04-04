@@ -1,0 +1,455 @@
+/**
+ * kwtSMS - Admin CSS
+ *
+ * Branding:
+ *   Primary   #FFA200 (orange)
+ *   Accent    #79CCF2 (blue)
+ *   Text      #434345
+ *   Headings  Montserrat
+ *   Body      Lato
+ *
+ * @author    kwtSMS <support@kwtsms.com>
+ * @copyright kwtSMS
+ * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0
+ */
+
+/* ============================================================
+   CSS Custom Properties
+   ============================================================ */
+:root {
+  --kwtsms-orange: #FFA200;
+  --kwtsms-blue:   #79CCF2;
+  --kwtsms-text:   #434345;
+}
+
+/* ============================================================
+   Wrapper
+   ============================================================ */
+.kwtsms-wrapper {
+  font-family: Lato, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--kwtsms-text);
+}
+
+/* ============================================================
+   Module Header Bar
+   ============================================================ */
+.kwtsms-header {
+  background: #fff;
+  border-left: 4px solid var(--kwtsms-orange);
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.kwtsms-header .kwtsms-logo {
+  height: 32px;
+  width: auto;
+}
+
+.kwtsms-header h2 {
+  margin: 0;
+  font-family: Montserrat, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.3px;
+}
+
+.kwtsms-header .kwtsms-version {
+  margin-left: auto;
+  font-size: 12px;
+  color: #999;
+}
+
+/* ============================================================
+   Tab Navigation Bar
+   ============================================================ */
+.kwtsms-tabs {
+  background: #fff;
+  border-bottom: 3px solid var(--kwtsms-orange);
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.kwtsms-tabs .nav-tabs {
+  border-bottom: none;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.kwtsms-tabs .nav-tabs > li > a {
+  border-radius: 0;
+  border: none;
+  color: #555;
+  font-family: Montserrat, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 14px 20px;
+  -webkit-transition: color 0.2s, border-bottom 0.2s;
+          transition: color 0.2s, border-bottom 0.2s;
+}
+
+.kwtsms-tabs .nav-tabs > li > a:hover {
+  background: transparent;
+  color: var(--kwtsms-orange);
+  border-bottom: 3px solid var(--kwtsms-orange);
+  margin-bottom: -3px;
+}
+
+.kwtsms-tabs .nav-tabs > li.active > a,
+.kwtsms-tabs .nav-tabs > li.active > a:hover,
+.kwtsms-tabs .nav-tabs > li.active > a:focus {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid var(--kwtsms-orange);
+  color: var(--kwtsms-orange);
+  margin-bottom: -3px;
+}
+
+/* ============================================================
+   Section Title
+   ============================================================ */
+.kwtsms-section-title {
+  font-family: Montserrat, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #aaa;
+  margin: 20px 0 10px;
+}
+
+/* ============================================================
+   Status Cards (Dashboard - gateway status row)
+   ============================================================ */
+.kwtsms-status-cards .panel {
+  border-top: 3px solid var(--kwtsms-blue);
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.kwtsms-status-cards .panel-heading {
+  background: #f9f9f9;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #777;
+  padding: 8px 14px;
+}
+
+.kwtsms-status-cards .panel-body {
+  padding: 14px;
+}
+
+.kwtsms-status-cards .panel-body .status-value {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.kwtsms-status-cards .panel-body .status-sub {
+  display: block;
+  font-size: 11px;
+  color: #aaa;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   Balance Refresh Area
+   ============================================================ */
+.kwtsms-refresh-area {
+  margin-top: 10px;
+}
+
+/* ============================================================
+   Stats Cards (Dashboard - activity row)
+   ============================================================ */
+.kwtsms-stats-cards .panel {
+  border-top: 3px solid var(--kwtsms-orange);
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.kwtsms-stats-cards .panel-heading {
+  background: #fff8ee;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #999;
+  padding: 8px 14px;
+}
+
+.kwtsms-stats-cards .panel-body {
+  padding: 18px 14px;
+}
+
+.kwtsms-stats-cards .stat-number {
+  display: block;
+  font-family: Montserrat, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--kwtsms-orange);
+  line-height: 1;
+}
+
+.kwtsms-stats-cards .stat-number.failed {
+  color: #e74c3c;
+}
+
+.kwtsms-stats-cards .stat-label {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   Status / Log Badges
+   ============================================================ */
+.label-kwtsms-ok {
+  display: inline-block;
+  background-color: #27ae60;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.label-kwtsms-err {
+  display: inline-block;
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.label-kwtsms-warn {
+  display: inline-block;
+  background-color: #f39c12;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.label-kwtsms-info {
+  display: inline-block;
+  background-color: var(--kwtsms-blue);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   Integration Toggle Label (Settings tab)
+   ============================================================ */
+.kwtsms-toggle-label {
+  cursor: pointer;
+  font-weight: normal;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+}
+
+.kwtsms-toggle-label input[type="checkbox"] {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+/* ============================================================
+   Template Placeholder Chips (Templates tab)
+   ============================================================ */
+.kwtsms-placeholder-chips {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.kwtsms-chip {
+  display: inline-block;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin: 2px 4px 2px 0;
+  font-size: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #555;
+  cursor: default;
+  -webkit-user-select: all;
+      -ms-user-select: all;
+          user-select: all;
+}
+
+.kwtsms-chip:hover {
+  background: #e8e8e8;
+  border-color: #ccc;
+}
+
+/* ============================================================
+   RTL Support for Arabic Textarea (Templates tab)
+   ============================================================ */
+textarea[dir="rtl"] {
+  text-align: right;
+  font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+/* ============================================================
+   Log Table Formatting
+   ============================================================ */
+.kwtsms-wrapper .table td {
+  vertical-align: middle;
+  font-size: 13px;
+}
+
+.kwtsms-wrapper .table th {
+  font-family: Montserrat, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #666;
+  background: #f9f9f9;
+}
+
+/* Date column: no wrapping */
+.kwtsms-wrapper .table td.kwtsms-col-date {
+  white-space: nowrap;
+  font-size: 12px;
+  color: #888;
+}
+
+/* Message truncation tooltip cue */
+.kwtsms-wrapper .table td span[title] {
+  cursor: help;
+  border-bottom: 1px dotted #bbb;
+}
+
+/* ============================================================
+   Pagination
+   ============================================================ */
+.kwtsms-wrapper .pagination > li > a,
+.kwtsms-wrapper .pagination > li > span {
+  color: var(--kwtsms-orange);
+  border-color: #ddd;
+}
+
+.kwtsms-wrapper .pagination > li > a:hover,
+.kwtsms-wrapper .pagination > li > span:hover {
+  background-color: #fff8ee;
+  border-color: var(--kwtsms-orange);
+  color: var(--kwtsms-orange);
+}
+
+.kwtsms-wrapper .pagination > .active > a,
+.kwtsms-wrapper .pagination > .active > a:hover,
+.kwtsms-wrapper .pagination > .active > a:focus,
+.kwtsms-wrapper .pagination > .active > span {
+  background-color: var(--kwtsms-orange);
+  border-color: var(--kwtsms-orange);
+  color: #fff;
+}
+
+/* ============================================================
+   Panel Headers (subtle brand accent)
+   ============================================================ */
+.kwtsms-wrapper > .kwtsms-tab-content .panel-heading {
+  font-family: Montserrat, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* ============================================================
+   Primary Buttons (orange override for btn-primary in module)
+   ============================================================ */
+.kwtsms-wrapper .btn-primary {
+  background-color: var(--kwtsms-orange);
+  border-color: var(--kwtsms-orange);
+  color: #fff;
+}
+
+.kwtsms-wrapper .btn-primary:hover,
+.kwtsms-wrapper .btn-primary:focus,
+.kwtsms-wrapper .btn-primary:active {
+  background-color: #e69200;
+  border-color: #d98b00;
+  color: #fff;
+}
+
+/* ============================================================
+   Cron URL Input (Gateway tab)
+   ============================================================ */
+.kwtsms-wrapper .input-group .form-control[readonly] {
+  background-color: #f9f9f9;
+  color: #555;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+}
+
+/* ============================================================
+   Copy button feedback state
+   ============================================================ */
+.kwtsms-wrapper .btn-copy-success {
+  background-color: #27ae60;
+  border-color: #219a52;
+  color: #fff;
+}
+
+/* ============================================================
+   Responsive Adjustments
+   ============================================================ */
+@media (max-width: 767px) {
+  .kwtsms-header {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .kwtsms-header .kwtsms-version {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .kwtsms-tabs .nav-tabs > li > a {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .kwtsms-stats-cards .stat-number {
+    font-size: 28px;
+  }
+
+  .kwtsms-wrapper .table-responsive {
+    border: none;
+  }
+}
