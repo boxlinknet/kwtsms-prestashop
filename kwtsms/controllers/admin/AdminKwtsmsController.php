@@ -68,7 +68,9 @@ class AdminKwtsmsController extends ModuleAdminController
         $this->addCSS(_PS_MODULE_DIR_ . 'kwtsms/views/css/admin.css');
         $this->addJS(_PS_MODULE_DIR_ . 'kwtsms/views/js/admin.js');
 
-        $this->setTemplate('dashboard.tpl');
+        $this->content .= $this->context->smarty->fetch(
+            _PS_MODULE_DIR_ . 'kwtsms/views/templates/admin/dashboard.tpl'
+        );
     }
 
     /**

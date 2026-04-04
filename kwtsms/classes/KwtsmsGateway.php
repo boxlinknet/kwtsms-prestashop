@@ -67,24 +67,26 @@ class KwtsmsGateway
         $tempClient = new KwtSMS($username, $password, $senderId, $testMode);
 
         try {
-            $balanceResult = $tempClient->balance();
+            $balance = $tempClient->balance();
         } catch (\Exception $e) {
             KwtsmsLogger::debug('gateway_connect', 'Exception: ' . $e->getMessage());
             return array('success' => false, 'balance' => null, 'error' => 'Connection failed. Check your credentials.');
         }
 
-        if (!isset($balanceResult['result']) || $balanceResult['result'] !== 'OK') {
-            $errorMsg = isset($balanceResult['description']) ? $balanceResult['description'] : 'Connection failed. Check your credentials.';
-            KwtsmsLogger::debug('gateway_connect', 'Balance check failed: ' . $errorMsg);
-            return array('success' => false, 'balance' => null, 'error' => $errorMsg);
+        if ($balance === null) {
+            KwtsmsLogger::debug('gateway_connect', 'Balance check failed: null returned');
+            return array('success' => false, 'balance' => null, 'error' => 'Connection failed. Check your credentials.');
         }
 
         Configuration::updateValue('KWTSMS_USERNAME', $username);
         Configuration::updateValue('KWTSMS_PASSWORD', $password);
         Configuration::updateValue('KWTSMS_GATEWAY_CONNECTED', true);
 
-        $balance = isset($balanceResult['available']) ? (float) $balanceResult['available'] : 0;
-        self::setCache('balance', json_encode($balanceResult));
+        $purchased = $tempClient->purchased();
+        self::setCache('balance', json_encode(array(
+            'available' => $balance,
+            'purchased' => $purchased,
+        )));
 
         $this->client = $tempClient;
         $this->syncSenderIds();
@@ -123,18 +125,21 @@ class KwtsmsGateway
         }
 
         try {
-            $result = $client->balance();
+            $balance = $client->balance();
         } catch (\Exception $e) {
             KwtsmsLogger::debug('sync_balance', 'Exception: ' . $e->getMessage());
             return null;
         }
 
-        if (isset($result['result']) && $result['result'] === 'OK') {
-            self::setCache('balance', json_encode($result));
-            KwtsmsLogger::debug('sync_balance', 'Balance synced: ' . json_encode($result));
+        if ($balance !== null) {
+            $purchased = $client->purchased();
+            $data = array('available' => $balance, 'purchased' => $purchased);
+            self::setCache('balance', json_encode($data));
+            KwtsmsLogger::debug('sync_balance', 'Balance synced: ' . $balance);
+            return $data;
         }
 
-        return $result;
+        return null;
     }
 
     /**
@@ -201,7 +206,13 @@ class KwtsmsGateway
         $cached = self::getCache('senderids');
         if ($cached) {
             $data = json_decode($cached, true);
-            return isset($data['senderid']) ? $data['senderid'] : array();
+            if (isset($data['senderids'])) {
+                return $data['senderids'];
+            }
+            if (isset($data['senderid'])) {
+                return $data['senderid'];
+            }
+            return array();
         }
         return array();
     }
@@ -216,9 +227,18 @@ class KwtsmsGateway
         $cached = self::getCache('coverage');
         if ($cached) {
             $data = json_decode($cached, true);
-            if (is_array($data) && isset($data['result']) && $data['result'] === 'OK') {
-                unset($data['result']);
-                return array_keys($data);
+            if (is_array($data)) {
+                if (isset($data['prefixes']) && is_array($data['prefixes'])) {
+                    return $data['prefixes'];
+                }
+                // Fallback: try extracting keys (old format)
+                if (isset($data['result'])) {
+                    unset($data['result']);
+                    if (isset($data['prefixes'])) {
+                        unset($data['prefixes']);
+                    }
+                    return array_keys($data);
+                }
             }
         }
         return array();

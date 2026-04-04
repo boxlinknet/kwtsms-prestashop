@@ -89,7 +89,7 @@ class KwtsmsSender
 
         foreach ($phones as $phone) {
             // Normalize
-            $normalized = PhoneUtils::normalize($phone);
+            $normalized = PhoneUtils::normalize_phone($phone);
             if (empty($normalized)) {
                 KwtsmsLogger::debug('normalize', 'Empty after normalization: ' . $phone);
                 $skipped++;
@@ -103,13 +103,14 @@ class KwtsmsSender
             }
 
             // 3. Verify: country-specific length + coverage check
-            if (!PhoneUtils::validate($normalized)) {
-                KwtsmsLogger::debug('verify', 'Invalid phone format: ' . $normalized);
+            $validation = PhoneUtils::validate_phone_format($normalized);
+            if (!$validation[0]) {
+                KwtsmsLogger::debug('verify', 'Invalid phone format: ' . $normalized . ' - ' . ($validation[1] ?? ''));
                 $skipped++;
                 continue;
             }
 
-            $phoneCountry = PhoneUtils::country_code($normalized);
+            $phoneCountry = PhoneUtils::find_country_code($normalized);
             if (!empty($coverage) && $phoneCountry && !in_array($phoneCountry, $coverage)) {
                 KwtsmsLogger::debug('verify', 'Country not in coverage: ' . $normalized . ' (prefix: ' . $phoneCountry . ')');
                 $skipped++;
@@ -226,8 +227,7 @@ class KwtsmsSender
                 // Update cached balance
                 if (isset($apiResult['balance-after'])) {
                     KwtsmsGateway::setCache('balance', json_encode(array(
-                        'result' => 'OK',
-                        'available' => $apiResult['balance-after'],
+                        'available' => (float) $apiResult['balance-after'],
                     )));
                 }
             } else {

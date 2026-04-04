@@ -41,7 +41,7 @@ class KwtsmsCron
 
         // Sync balance
         $balanceResult = $gateway->syncBalance();
-        if ($balanceResult && isset($balanceResult['result']) && $balanceResult['result'] === 'OK') {
+        if ($balanceResult && isset($balanceResult['available'])) {
             $results['balance'] = true;
         } else {
             KwtsmsLogger::debug('cron', 'Balance sync failed: ' . json_encode($balanceResult));
