@@ -37,7 +37,19 @@ class AdminKwtsmsController extends ModuleAdminController
     public function __construct()
     {
         $this->bootstrap = true;
+        $this->display = 'view';
         parent::__construct();
+    }
+
+    public function initToolbarTitle()
+    {
+        $this->toolbar_title = array('kwtSMS');
+    }
+
+    public function initPageHeaderToolbar()
+    {
+        $this->page_header_toolbar_title = 'kwtSMS';
+        $this->page_header_toolbar_btn = array();
     }
 
     public function initContent()
@@ -52,25 +64,27 @@ class AdminKwtsmsController extends ModuleAdminController
         // Handle POST actions
         $this->processActions($currentTab);
 
-        // Build tab content
-        $tabContent = $this->renderTab($currentTab);
-
-        // Assign common variables
+        // Assign common variables BEFORE rendering tabs (templates need these)
         $this->context->smarty->assign(array(
-            'tabs'        => $this->tabs,
+            'kwtsms_tabs' => $this->tabs,
             'current_tab' => $currentTab,
-            'tab_content' => $tabContent,
+            'tab_content' => '',
             'admin_link'  => $this->context->link->getAdminLink('AdminKwtsms'),
             'module_dir'  => _PS_MODULE_DIR_ . 'kwtsms/',
         ));
+
+        // Build tab content (may use common variables)
+        $tabContent = $this->renderTab($currentTab);
+        $this->context->smarty->assign('tab_content', $tabContent);
 
         // Add CSS/JS
         $this->addCSS(_PS_MODULE_DIR_ . 'kwtsms/views/css/admin.css');
         $this->addJS(_PS_MODULE_DIR_ . 'kwtsms/views/js/admin.js');
 
-        $this->content .= $this->context->smarty->fetch(
+        // Render the layout wrapper (dashboard.tpl contains tab nav + content area)
+        $this->context->smarty->assign('content', $this->context->smarty->fetch(
             _PS_MODULE_DIR_ . 'kwtsms/views/templates/admin/dashboard.tpl'
-        );
+        ));
     }
 
     /**
@@ -149,9 +163,9 @@ class AdminKwtsmsController extends ModuleAdminController
             'failed_month'      => $stats['failed_month'],
         ));
 
-        return $this->context->smarty->fetch(
-            _PS_MODULE_DIR_ . 'kwtsms/views/templates/admin/dashboard.tpl'
-        );
+        // Dashboard content is rendered inside the layout wrapper (dashboard.tpl)
+        // via {if $current_tab == 'dashboard'} block, so no separate fetch needed.
+        return '';
     }
 
     // =========================================================================

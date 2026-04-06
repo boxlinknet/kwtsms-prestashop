@@ -136,8 +136,8 @@
     function bindChipInsert() {
         var $lastTextarea = null;
 
-        // Track the last focused textarea
-        $(document).on('focus', '.kwtsms-placeholder-chips').on('focus', 'textarea', function () {
+        // Track the last focused textarea in template edit forms
+        $(document).on('focus', 'textarea', function () {
             $lastTextarea = $(this);
         });
 

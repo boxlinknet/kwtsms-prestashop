@@ -36,5 +36,12 @@ prestashop-docs/
 /vendor/
 kwtsms/vendor/
 
+# Playwright artifacts
+.playwright-cli/
+*.yaml
+
+# Remember
+.remember/
+
 # PrestaShop cache
 /var/cache/

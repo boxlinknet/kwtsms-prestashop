@@ -199,7 +199,7 @@
 
   {* Header bar *}
   <div class="kwtsms-header">
-    <img src="{$module_dir}views/img/kwtsms_logo.png" class="kwtsms-logo" alt="kwtSMS" />
+    <img src="../modules/kwtsms/views/img/kwtsms_logo.png" class="kwtsms-logo" alt="kwtSMS" />
     <h2>kwtSMS</h2>
     <span class="kwtsms-version">SMS Gateway for PrestaShop</span>
   </div>
@@ -207,7 +207,7 @@
   {* Tab navigation *}
   <div class="kwtsms-tabs">
     <ul class="nav nav-tabs" role="tablist">
-      {foreach from=$tabs key=tab_key item=tab_label}
+      {foreach from=$kwtsms_tabs key=tab_key item=tab_label}
         <li role="presentation"{if $current_tab == $tab_key} class="active"{/if}>
           <a href="{$admin_link}&amp;tab={$tab_key}">{$tab_label}</a>
         </li>
