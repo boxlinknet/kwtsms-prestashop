@@ -20,18 +20,17 @@
   {* ============================================================ *}
   <div class="panel">
     <div class="panel-heading">
-      <i class="icon-phone"></i> Admin Notification Phones
+      <i class="icon-phone"></i> {l s='Admin Notification Phones' mod='kwtsms'}
     </div>
     <div class="panel-body">
       <div class="form-group">
-        <label for="kwtsms_admin_phones">Admin Phone Numbers</label>
+        <label for="kwtsms_admin_phones">{l s='Admin Phone Numbers' mod='kwtsms'}</label>
         <input type="text" id="kwtsms_admin_phones" name="kwtsms_admin_phones"
                class="form-control" style="max-width: 500px;"
                value="{$admin_phones|escape:'html':'UTF-8'}"
                placeholder="e.g. 96598765432, 96512345678" />
         <p class="help-block">
-          Comma-separated phone numbers that receive admin alerts (new orders, new customers, low stock, etc.).
-          Include the country code.
+          {l s='Comma-separated phone numbers that receive admin alerts (new orders, new customers, low stock, etc.). Include the country code.' mod='kwtsms'}
         </p>
       </div>
     </div>
@@ -42,21 +41,21 @@
   {* ============================================================ *}
   <div class="panel">
     <div class="panel-heading">
-      <i class="icon-puzzle-piece"></i> SMS Integrations
+      <i class="icon-puzzle-piece"></i> {l s='SMS Integrations' mod='kwtsms'}
     </div>
     <div class="panel-body">
       <p class="help-block" style="margin-bottom: 15px;">
-        Enable or disable each SMS integration. When enabled, the module will send SMS messages for that event.
+        {l s='Enable or disable each SMS integration. When enabled, the module will send SMS messages for that event.' mod='kwtsms'}
       </p>
 
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
-              <th style="width: 40%;">Integration</th>
-              <th style="width: 20%;">Recipient</th>
-              <th style="width: 20%;">Status</th>
-              <th style="width: 20%;">Settings</th>
+              <th style="width: 40%;">{l s='Integration' mod='kwtsms'}</th>
+              <th style="width: 20%;">{l s='Recipient' mod='kwtsms'}</th>
+              <th style="width: 20%;">{l s='Status' mod='kwtsms'}</th>
+              <th style="width: 20%;">{l s='Settings' mod='kwtsms'}</th>
             </tr>
           </thead>
           <tbody>
@@ -69,12 +68,12 @@
                 </td>
                 <td>
                   {if $integ.recipient_type == 'customer'}
-                    <span class="label" style="background-color: #79CCF2;">Customer</span>
+                    <span class="label" style="background-color: #79CCF2;">{l s='Customer' mod='kwtsms'}</span>
                   {elseif $integ.recipient_type == 'admin'}
-                    <span class="label" style="background-color: #FFA200;">Admin</span>
+                    <span class="label" style="background-color: #FFA200;">{l s='Admin' mod='kwtsms'}</span>
                   {elseif $integ.recipient_type == 'both'}
-                    <span class="label" style="background-color: #79CCF2;">Customer</span>
-                    <span class="label" style="background-color: #FFA200;">Admin</span>
+                    <span class="label" style="background-color: #79CCF2;">{l s='Customer' mod='kwtsms'}</span>
+                    <span class="label" style="background-color: #FFA200;">{l s='Admin' mod='kwtsms'}</span>
                   {/if}
                 </td>
                 <td>
@@ -84,9 +83,9 @@
                            value="1"
                            {if $integ.active} checked="checked"{/if} />
                     {if $integ.active}
-                      <span class="label-kwtsms-ok">On</span>
+                      <span class="label-kwtsms-ok">{l s='On' mod='kwtsms'}</span>
                     {else}
-                      <span class="label-kwtsms-err">Off</span>
+                      <span class="label-kwtsms-err">{l s='Off' mod='kwtsms'}</span>
                     {/if}
                   </label>
                 </td>
@@ -94,7 +93,7 @@
                   {if $integ.integration_key == 'low_stock'}
                     <div class="form-group" style="margin-bottom: 0;">
                       <div class="input-group" style="max-width: 160px;">
-                        <span class="input-group-addon">Threshold</span>
+                        <span class="input-group-addon">{l s='Threshold' mod='kwtsms'}</span>
                         <input type="number" name="low_stock_threshold"
                                class="form-control"
                                value="{$low_stock_threshold|intval}"
@@ -112,7 +111,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary" style="background-color: #FFA200; border-color: #FFA200; margin-top: 10px;">
-        <i class="icon-save"></i> Save Settings
+        <i class="icon-save"></i> {l s='Save Settings' mod='kwtsms'}
       </button>
     </div>
   </div>

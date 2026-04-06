@@ -24,21 +24,23 @@ require_once _PS_MODULE_DIR_ . 'kwtsms/classes/KwtsmsCron.php';
 
 class AdminKwtsmsController extends ModuleAdminController
 {
-    /** @var array Tab definitions */
-    private $tabs = array(
-        'dashboard' => 'Dashboard',
-        'gateway'   => 'Gateway',
-        'settings'  => 'Settings',
-        'templates' => 'Templates',
-        'logs'      => 'Logs',
-        'help'      => 'Help',
-    );
+    /** @var array Tab definitions (populated in constructor with translations) */
+    private $tabs = array();
 
     public function __construct()
     {
         $this->bootstrap = true;
         $this->display = 'view';
         parent::__construct();
+
+        $this->tabs = array(
+            'dashboard' => $this->l('Dashboard'),
+            'gateway'   => $this->l('Gateway'),
+            'settings'  => $this->l('Settings'),
+            'templates' => $this->l('Templates'),
+            'logs'      => $this->l('Logs'),
+            'help'      => $this->l('Help'),
+        );
     }
 
     public function initToolbarTitle()
@@ -212,7 +214,7 @@ class AdminKwtsmsController extends ModuleAdminController
 
                 if (empty($username) || empty($password)) {
                     $this->context->smarty->assign(array(
-                        'gateway_message'      => 'Please enter both username and password.',
+                        'gateway_message'      => $this->l('Please enter both username and password.'),
                         'gateway_message_type' => 'danger',
                     ));
                     return;
@@ -223,12 +225,12 @@ class AdminKwtsmsController extends ModuleAdminController
 
                 if ($result['success']) {
                     $this->context->smarty->assign(array(
-                        'gateway_message'      => 'Connected successfully! Balance: ' . number_format($result['balance'], 2) . ' credits.',
+                        'gateway_message'      => sprintf($this->l('Connected successfully! Balance: %s credits.'), number_format($result['balance'], 2)),
                         'gateway_message_type' => 'success',
                     ));
                 } else {
                     $this->context->smarty->assign(array(
-                        'gateway_message'      => 'Connection failed: ' . $result['error'],
+                        'gateway_message'      => sprintf($this->l('Connection failed: %s'), $result['error']),
                         'gateway_message_type' => 'danger',
                     ));
                 }
@@ -248,7 +250,7 @@ class AdminKwtsmsController extends ModuleAdminController
                 Configuration::updateValue('KWTSMS_DEBUG_MODE', $debugMode);
 
                 $this->context->smarty->assign(array(
-                    'gateway_message'      => 'Gateway configuration saved.',
+                    'gateway_message'      => $this->l('Gateway configuration saved.'),
                     'gateway_message_type' => 'success',
                 ));
                 break;
@@ -259,7 +261,7 @@ class AdminKwtsmsController extends ModuleAdminController
 
                 if (empty($phone)) {
                     $this->context->smarty->assign(array(
-                        'gateway_message'      => 'Please enter a phone number.',
+                        'gateway_message'      => $this->l('Please enter a phone number.'),
                         'gateway_message_type' => 'danger',
                     ));
                     return;
@@ -290,12 +292,12 @@ class AdminKwtsmsController extends ModuleAdminController
                 if ($balanceResult && isset($balanceResult['result']) && $balanceResult['result'] === 'OK') {
                     $balance = isset($balanceResult['available']) ? (float) $balanceResult['available'] : 0;
                     $this->context->smarty->assign(array(
-                        'gateway_message'      => 'Balance refreshed: ' . number_format($balance, 2) . ' credits.',
+                        'gateway_message'      => sprintf($this->l('Balance refreshed: %s credits.'), number_format($balance, 2)),
                         'gateway_message_type' => 'success',
                     ));
                 } else {
                     $this->context->smarty->assign(array(
-                        'gateway_message'      => 'Failed to refresh balance. Check your connection.',
+                        'gateway_message'      => $this->l('Failed to refresh balance. Check your connection.'),
                         'gateway_message_type' => 'danger',
                     ));
                 }
@@ -316,24 +318,24 @@ class AdminKwtsmsController extends ModuleAdminController
     {
         return array(
             'order_placed' => array(
-                'label' => 'Order Placed',
-                'description' => 'Send SMS when a new order is placed.',
+                'label' => $this->l('Order Placed'),
+                'description' => $this->l('Send SMS when a new order is placed.'),
             ),
             'order_status_changed' => array(
-                'label' => 'Order Status Changed',
-                'description' => 'Send SMS when an order status is updated.',
+                'label' => $this->l('Order Status Changed'),
+                'description' => $this->l('Send SMS when an order status is updated.'),
             ),
             'new_customer' => array(
-                'label' => 'New Customer Registered',
-                'description' => 'Send SMS when a new customer signs up.',
+                'label' => $this->l('New Customer Registered'),
+                'description' => $this->l('Send SMS when a new customer signs up.'),
             ),
             'payment_confirmed' => array(
-                'label' => 'Payment Confirmed',
-                'description' => 'Send SMS when payment for an order is confirmed.',
+                'label' => $this->l('Payment Confirmed'),
+                'description' => $this->l('Send SMS when payment for an order is confirmed.'),
             ),
             'low_stock' => array(
-                'label' => 'Low Stock Alert',
-                'description' => 'Send SMS to admin when stock drops below threshold.',
+                'label' => $this->l('Low Stock Alert'),
+                'description' => $this->l('Send SMS to admin when stock drops below threshold.'),
             ),
         );
     }
@@ -420,7 +422,7 @@ class AdminKwtsmsController extends ModuleAdminController
         }
 
         $this->context->smarty->assign(array(
-            'settings_message'      => 'Settings saved successfully.',
+            'settings_message'      => $this->l('Settings saved successfully.'),
             'settings_message_type' => 'success',
         ));
     }
@@ -439,14 +441,14 @@ class AdminKwtsmsController extends ModuleAdminController
     private function getTemplateLabel($key)
     {
         $labels = array(
-            'order_placed_customer'          => 'Order Placed (Customer)',
-            'order_placed_admin'             => 'Order Placed (Admin)',
-            'order_status_changed_customer'  => 'Order Status Changed (Customer)',
-            'new_customer_customer'          => 'New Customer Welcome (Customer)',
-            'new_customer_admin'             => 'New Customer Alert (Admin)',
-            'payment_confirmed_customer'     => 'Payment Confirmed (Customer)',
-            'payment_confirmed_admin'        => 'Payment Confirmed (Admin)',
-            'low_stock_admin'                => 'Low Stock Alert (Admin)',
+            'order_placed_customer'          => $this->l('Order Placed (Customer)'),
+            'order_placed_admin'             => $this->l('Order Placed (Admin)'),
+            'order_status_changed_customer'  => $this->l('Order Status Changed (Customer)'),
+            'new_customer_customer'          => $this->l('New Customer Welcome (Customer)'),
+            'new_customer_admin'             => $this->l('New Customer Alert (Admin)'),
+            'payment_confirmed_customer'     => $this->l('Payment Confirmed (Customer)'),
+            'payment_confirmed_admin'        => $this->l('Payment Confirmed (Admin)'),
+            'low_stock_admin'                => $this->l('Low Stock Alert (Admin)'),
         );
 
         return isset($labels[$key]) ? $labels[$key] : $key;
@@ -512,12 +514,12 @@ class AdminKwtsmsController extends ModuleAdminController
 
         if ($result) {
             $this->context->smarty->assign(array(
-                'templates_message'      => 'Template saved successfully.',
+                'templates_message'      => $this->l('Template saved successfully.'),
                 'templates_message_type' => 'success',
             ));
         } else {
             $this->context->smarty->assign(array(
-                'templates_message'      => 'Failed to save template.',
+                'templates_message'      => $this->l('Failed to save template.'),
                 'templates_message_type' => 'danger',
             ));
         }
@@ -624,12 +626,12 @@ class AdminKwtsmsController extends ModuleAdminController
 
             if ($result) {
                 $this->context->smarty->assign(array(
-                    'logs_message'      => 'All logs have been cleared.',
+                    'logs_message'      => $this->l('All logs have been cleared.'),
                     'logs_message_type' => 'success',
                 ));
             } else {
                 $this->context->smarty->assign(array(
-                    'logs_message'      => 'Failed to clear logs.',
+                    'logs_message'      => $this->l('Failed to clear logs.'),
                     'logs_message_type' => 'danger',
                 ));
             }

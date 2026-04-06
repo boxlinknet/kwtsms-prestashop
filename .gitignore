@@ -28,7 +28,8 @@ prestashop-docs/
 # Logs
 *.log
 
-# Archives
+# Archives / distribution
+dist/
 *.zip
 *.tar.gz
 

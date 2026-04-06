@@ -201,7 +201,7 @@
   <div class="kwtsms-header">
     <img src="../modules/kwtsms/views/img/kwtsms_logo.png" class="kwtsms-logo" alt="kwtSMS" />
     <h2>kwtSMS</h2>
-    <span class="kwtsms-version">SMS Gateway for PrestaShop</span>
+    <span class="kwtsms-version">{l s='SMS Gateway for PrestaShop' mod='kwtsms'}</span>
   </div>
 
   {* Tab navigation *}
@@ -218,19 +218,19 @@
   {* Dashboard-only status and stats cards *}
   {if $current_tab == 'dashboard'}
 
-    <p class="kwtsms-section-title">Gateway Status</p>
+    <p class="kwtsms-section-title">{l s='Gateway Status' mod='kwtsms'}</p>
 
     <div class="row kwtsms-status-cards">
 
       {* Connected *}
       <div class="col-md-2 col-sm-4 col-xs-6">
         <div class="panel">
-          <div class="panel-heading">Connection</div>
+          <div class="panel-heading">{l s='Connection' mod='kwtsms'}</div>
           <div class="panel-body">
             {if $gateway_connected}
-              <span class="status-value"><span class="label-kwtsms-ok">Connected</span></span>
+              <span class="status-value"><span class="label-kwtsms-ok">{l s='Connected' mod='kwtsms'}</span></span>
             {else}
-              <span class="status-value"><span class="label-kwtsms-err">Disconnected</span></span>
+              <span class="status-value"><span class="label-kwtsms-err">{l s='Disconnected' mod='kwtsms'}</span></span>
             {/if}
           </div>
         </div>
@@ -239,12 +239,12 @@
       {* Enabled *}
       <div class="col-md-2 col-sm-4 col-xs-6">
         <div class="panel">
-          <div class="panel-heading">SMS Sending</div>
+          <div class="panel-heading">{l s='SMS Sending' mod='kwtsms'}</div>
           <div class="panel-body">
             {if $gateway_enabled}
-              <span class="status-value"><span class="label-kwtsms-ok">Enabled</span></span>
+              <span class="status-value"><span class="label-kwtsms-ok">{l s='Enabled' mod='kwtsms'}</span></span>
             {else}
-              <span class="status-value"><span class="label-kwtsms-warn">Disabled</span></span>
+              <span class="status-value"><span class="label-kwtsms-warn">{l s='Disabled' mod='kwtsms'}</span></span>
             {/if}
           </div>
         </div>
@@ -253,12 +253,12 @@
       {* Test mode *}
       <div class="col-md-2 col-sm-4 col-xs-6">
         <div class="panel">
-          <div class="panel-heading">Mode</div>
+          <div class="panel-heading">{l s='Mode' mod='kwtsms'}</div>
           <div class="panel-body">
             {if $test_mode}
-              <span class="status-value"><span class="label-kwtsms-warn">Test Mode</span></span>
+              <span class="status-value"><span class="label-kwtsms-warn">{l s='Test Mode' mod='kwtsms'}</span></span>
             {else}
-              <span class="status-value"><span class="label-kwtsms-ok">Live</span></span>
+              <span class="status-value"><span class="label-kwtsms-ok">{l s='Live' mod='kwtsms'}</span></span>
             {/if}
           </div>
         </div>
@@ -267,18 +267,18 @@
       {* Balance *}
       <div class="col-md-2 col-sm-4 col-xs-6">
         <div class="panel">
-          <div class="panel-heading">Balance</div>
+          <div class="panel-heading">{l s='Balance' mod='kwtsms'}</div>
           <div class="panel-body">
             <span class="status-value" style="color: #FFA200;">{$balance|string_format:"%.2f"}</span>
             {if $balance_updated}
-              <span class="status-sub">Updated: {$balance_updated}</span>
+              <span class="status-sub">{l s='Updated:' mod='kwtsms'} {$balance_updated}</span>
             {else}
-              <span class="status-sub">Never synced</span>
+              <span class="status-sub">{l s='Never synced' mod='kwtsms'}</span>
             {/if}
             <div class="kwtsms-refresh-area">
               <a href="{$admin_link}&amp;tab=dashboard&amp;action=refresh_balance&amp;token={$smarty.get.token}"
                  class="btn btn-default btn-xs">
-                <i class="icon-refresh"></i> Refresh
+                <i class="icon-refresh"></i> {l s='Refresh' mod='kwtsms'}
               </a>
             </div>
           </div>
@@ -288,12 +288,12 @@
       {* Sender ID *}
       <div class="col-md-2 col-sm-4 col-xs-6">
         <div class="panel">
-          <div class="panel-heading">Sender ID</div>
+          <div class="panel-heading">{l s='Sender ID' mod='kwtsms'}</div>
           <div class="panel-body">
             {if $sender_id}
               <span class="status-value"><span class="label-kwtsms-info">{$sender_id}</span></span>
             {else}
-              <span class="status-value"><span class="label-kwtsms-err">Not set</span></span>
+              <span class="status-value"><span class="label-kwtsms-err">{l s='Not set' mod='kwtsms'}</span></span>
             {/if}
           </div>
         </div>
@@ -302,12 +302,12 @@
       {* Default country *}
       <div class="col-md-2 col-sm-4 col-xs-6">
         <div class="panel">
-          <div class="panel-heading">Default Country</div>
+          <div class="panel-heading">{l s='Default Country' mod='kwtsms'}</div>
           <div class="panel-body">
             {if $default_country}
               <span class="status-value"><span class="label-kwtsms-info">+{$default_country}</span></span>
             {else}
-              <span class="status-value"><span class="label-kwtsms-err">Not set</span></span>
+              <span class="status-value"><span class="label-kwtsms-err">{l s='Not set' mod='kwtsms'}</span></span>
             {/if}
           </div>
         </div>
@@ -315,17 +315,17 @@
 
     </div>{* /.row .kwtsms-status-cards *}
 
-    <p class="kwtsms-section-title">SMS Activity</p>
+    <p class="kwtsms-section-title">{l s='SMS Activity' mod='kwtsms'}</p>
 
     <div class="row kwtsms-stats-cards">
 
       {* Sent today *}
       <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="panel">
-          <div class="panel-heading">Sent Today</div>
+          <div class="panel-heading">{l s='Sent Today' mod='kwtsms'}</div>
           <div class="panel-body">
             <span class="stat-number">{$sent_today}</span>
-            <span class="stat-label">messages</span>
+            <span class="stat-label">{l s='messages' mod='kwtsms'}</span>
           </div>
         </div>
       </div>
@@ -333,10 +333,10 @@
       {* Sent this month *}
       <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="panel">
-          <div class="panel-heading">Sent This Month</div>
+          <div class="panel-heading">{l s='Sent This Month' mod='kwtsms'}</div>
           <div class="panel-body">
             <span class="stat-number">{$sent_month}</span>
-            <span class="stat-label">messages</span>
+            <span class="stat-label">{l s='messages' mod='kwtsms'}</span>
           </div>
         </div>
       </div>
@@ -344,10 +344,10 @@
       {* Failed this month *}
       <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="panel">
-          <div class="panel-heading">Failed This Month</div>
+          <div class="panel-heading">{l s='Failed This Month' mod='kwtsms'}</div>
           <div class="panel-body">
             <span class="stat-number failed">{$failed_month}</span>
-            <span class="stat-label">messages</span>
+            <span class="stat-label">{l s='messages' mod='kwtsms'}</span>
           </div>
         </div>
       </div>

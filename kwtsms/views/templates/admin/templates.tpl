@@ -18,9 +18,9 @@
 
 <div class="panel">
   <div class="panel-heading">
-    <i class="icon-pencil"></i> Edit Template: {$edit_template.label|escape:'html':'UTF-8'}
+    <i class="icon-pencil"></i> {l s='Edit Template:' mod='kwtsms'} {$edit_template.label|escape:'html':'UTF-8'}
     <a href="{$admin_link|escape:'html':'UTF-8'}&amp;tab=templates" class="btn btn-default btn-xs pull-right">
-      <i class="icon-arrow-left"></i> Back to List
+      <i class="icon-arrow-left"></i> {l s='Back to List' mod='kwtsms'}
     </a>
   </div>
   <div class="panel-body">
@@ -32,13 +32,13 @@
         {* English content *}
         <div class="col-md-6">
           <div class="form-group">
-            <label for="content_en">English</label>
+            <label for="content_en">{l s='English' mod='kwtsms'}</label>
             <textarea id="content_en" name="content_en"
                       class="form-control" rows="6"
                       dir="ltr">{$edit_template.content_en|escape:'html':'UTF-8'}</textarea>
           </div>
           <div class="kwtsms-placeholder-chips">
-            <strong>Placeholders:</strong>
+            <strong>{l s='Placeholders:' mod='kwtsms'}</strong>
             {foreach from=$edit_template.placeholders item=ph}
               <span class="kwtsms-chip">{$ph|escape:'html':'UTF-8'}</span>
             {/foreach}
@@ -48,13 +48,13 @@
         {* Arabic content *}
         <div class="col-md-6">
           <div class="form-group">
-            <label for="content_ar">Arabic</label>
+            <label for="content_ar">{l s='Arabic' mod='kwtsms'}</label>
             <textarea id="content_ar" name="content_ar"
                       class="form-control" rows="6"
                       dir="rtl">{$edit_template.content_ar|escape:'html':'UTF-8'}</textarea>
           </div>
           <div class="kwtsms-placeholder-chips">
-            <strong>Placeholders:</strong>
+            <strong>{l s='Placeholders:' mod='kwtsms'}</strong>
             {foreach from=$edit_template.placeholders item=ph}
               <span class="kwtsms-chip">{$ph|escape:'html':'UTF-8'}</span>
             {/foreach}
@@ -64,10 +64,10 @@
 
       <div style="margin-top: 15px;">
         <button type="submit" class="btn btn-primary" style="background-color: #FFA200; border-color: #FFA200;">
-          <i class="icon-save"></i> Save Template
+          <i class="icon-save"></i> {l s='Save Template' mod='kwtsms'}
         </button>
         <a href="{$admin_link|escape:'html':'UTF-8'}&amp;tab=templates" class="btn btn-default" style="margin-left: 10px;">
-          Cancel
+          {l s='Cancel' mod='kwtsms'}
         </a>
       </div>
     </form>
@@ -81,22 +81,21 @@
 {* ============================================================ *}
 <div class="panel">
   <div class="panel-heading">
-    <i class="icon-file-text"></i> SMS Templates
+    <i class="icon-file-text"></i> {l s='SMS Templates' mod='kwtsms'}
   </div>
   <div class="panel-body">
     <p class="help-block" style="margin-bottom: 15px;">
-      Edit the SMS message templates for each integration. Templates support both English and Arabic.
-      Click "Edit" to modify a template.
+      {l s='Edit the SMS message templates for each integration. Templates support both English and Arabic. Click "Edit" to modify a template.' mod='kwtsms'}
     </p>
 
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
-            <th style="width: 40%;">Template</th>
-            <th style="width: 15%;">Recipient</th>
-            <th style="width: 35%;">Preview (English)</th>
-            <th style="width: 10%;">Action</th>
+            <th style="width: 40%;">{l s='Template' mod='kwtsms'}</th>
+            <th style="width: 15%;">{l s='Recipient' mod='kwtsms'}</th>
+            <th style="width: 35%;">{l s='Preview (English)' mod='kwtsms'}</th>
+            <th style="width: 10%;">{l s='Action' mod='kwtsms'}</th>
           </tr>
         </thead>
         <tbody>
@@ -109,9 +108,9 @@
               </td>
               <td>
                 {if $tpl.recipient_type == 'customer'}
-                  <span class="label" style="background-color: #79CCF2;">Customer</span>
+                  <span class="label" style="background-color: #79CCF2;">{l s='Customer' mod='kwtsms'}</span>
                 {elseif $tpl.recipient_type == 'admin'}
-                  <span class="label" style="background-color: #FFA200;">Admin</span>
+                  <span class="label" style="background-color: #FFA200;">{l s='Admin' mod='kwtsms'}</span>
                 {/if}
               </td>
               <td>
@@ -120,7 +119,7 @@
               <td>
                 <a href="{$admin_link|escape:'html':'UTF-8'}&amp;tab=templates&amp;edit_template={$tpl.id_kwtsms_template|intval}"
                    class="btn btn-default btn-xs">
-                  <i class="icon-pencil"></i> Edit
+                  <i class="icon-pencil"></i> {l s='Edit' mod='kwtsms'}
                 </a>
               </td>
             </tr>

@@ -10,7 +10,7 @@
     {* Getting Started *}
     <div class="panel">
       <div class="panel-heading">
-        <i class="icon-rocket"></i> Getting Started
+        <i class="icon-rocket"></i> {l s='Getting Started' mod='kwtsms'}
       </div>
       <div class="panel-body">
         <ol>
@@ -37,7 +37,7 @@
     {* Setup Guide *}
     <div class="panel">
       <div class="panel-heading">
-        <i class="icon-list-ol"></i> Setup Guide
+        <i class="icon-list-ol"></i> {l s='Setup Guide' mod='kwtsms'}
       </div>
       <div class="panel-body">
         <ol>
@@ -58,15 +58,15 @@
     {* Features *}
     <div class="panel">
       <div class="panel-heading">
-        <i class="icon-star"></i> Features
+        <i class="icon-star"></i> {l s='Features' mod='kwtsms'}
       </div>
       <div class="panel-body">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Integration</th>
-              <th>Description</th>
-              <th>Recipients</th>
+              <th>{l s='Integration' mod='kwtsms'}</th>
+              <th>{l s='Description' mod='kwtsms'}</th>
+              <th>{l s='Recipients' mod='kwtsms'}</th>
             </tr>
           </thead>
           <tbody>
@@ -103,7 +103,7 @@
     {* Sender ID *}
     <div class="panel">
       <div class="panel-heading">
-        <i class="icon-tag"></i> About Sender IDs
+        <i class="icon-tag"></i> {l s='About Sender IDs' mod='kwtsms'}
       </div>
       <div class="panel-body">
         <p>
@@ -122,7 +122,7 @@
     {* Test Mode *}
     <div class="panel">
       <div class="panel-heading">
-        <i class="icon-flask"></i> Test Mode
+        <i class="icon-flask"></i> {l s='Test Mode' mod='kwtsms'}
       </div>
       <div class="panel-body">
         <p>
@@ -150,7 +150,7 @@
     {* Module Info *}
     <div class="panel" style="border-top: 3px solid #FFA200;">
       <div class="panel-heading">
-        <i class="icon-info-circle"></i> Module Info
+        <i class="icon-info-circle"></i> {l s='Module Info' mod='kwtsms'}
       </div>
       <div class="panel-body text-center">
         <img src="{$module_dir|escape:'html':'UTF-8'}views/img/kwtsms_logo.png"
@@ -163,7 +163,7 @@
     {* Support *}
     <div class="panel" style="border-top: 3px solid #79CCF2;">
       <div class="panel-heading">
-        <i class="icon-life-ring"></i> Support
+        <i class="icon-life-ring"></i> {l s='Support' mod='kwtsms'}
       </div>
       <div class="panel-body">
         <ul class="list-unstyled">
@@ -177,7 +177,7 @@
           </li>
           <li style="margin-bottom: 8px;">
             <i class="icon-book"></i>
-            <a href="https://kwtsms.com/developers" target="_blank" rel="noopener">API Documentation</a>
+            <a href="https://kwtsms.com/developers" target="_blank" rel="noopener">{l s='API Documentation' mod='kwtsms'}</a>
           </li>
         </ul>
       </div>
@@ -186,28 +186,28 @@
     {* Quick Links *}
     <div class="panel">
       <div class="panel-heading">
-        <i class="icon-link"></i> Quick Links
+        <i class="icon-link"></i> {l s='Quick Links' mod='kwtsms'}
       </div>
       <div class="panel-body">
         <ul class="list-unstyled">
           <li style="margin-bottom: 8px;">
             <a href="{$admin_link|escape:'html':'UTF-8'}&amp;tab=gateway">
-              <i class="icon-plug"></i> Gateway Settings
+              <i class="icon-plug"></i> {l s='Gateway Settings' mod='kwtsms'}
             </a>
           </li>
           <li style="margin-bottom: 8px;">
             <a href="{$admin_link|escape:'html':'UTF-8'}&amp;tab=settings">
-              <i class="icon-cogs"></i> Integration Settings
+              <i class="icon-cogs"></i> {l s='Integration Settings' mod='kwtsms'}
             </a>
           </li>
           <li style="margin-bottom: 8px;">
             <a href="{$admin_link|escape:'html':'UTF-8'}&amp;tab=templates">
-              <i class="icon-file-text"></i> SMS Templates
+              <i class="icon-file-text"></i> {l s='SMS Templates' mod='kwtsms'}
             </a>
           </li>
           <li style="margin-bottom: 8px;">
             <a href="{$admin_link|escape:'html':'UTF-8'}&amp;tab=logs">
-              <i class="icon-list"></i> View Logs
+              <i class="icon-list"></i> {l s='View Logs' mod='kwtsms'}
             </a>
           </li>
         </ul>
