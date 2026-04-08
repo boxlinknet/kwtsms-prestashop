@@ -61,51 +61,7 @@ Additional capabilities:
 1. Enter your **kwtSMS username** and **password**
 2. Set your approved **Sender ID**
 3. Toggle each notification type on or off
-4. Edit message templates using the placeholders below
-
-## Template Placeholders
-
-| Placeholder | Available in | Description |
-|---|---|---|
-| `{customer_name}` | All templates | Customer full name |
-| `{order_ref}` | Order placed, status changed, payment | Order reference number |
-| `{order_total}` | Order placed, payment | Order total amount |
-| `{currency}` | Order placed, payment | Currency code |
-| `{order_status}` | Status changed | New status name |
-| `{customer_email}` | New customer (admin) | Customer email address |
-| `{product_name}` | Low stock | Product name |
-| `{product_ref}` | Low stock | Product reference / SKU |
-| `{stock_quantity}` | Low stock | Current stock level |
-| `{shop_name}` | All templates | Inserted automatically |
-
-## Module Structure
-
-```
-kwtsms/
-  kwtsms.php                 # Main module: hooks, install, config routing
-  config.xml                 # Module metadata
-  composer.json              # Dependencies (kwtsms/kwtsms-php)
-  classes/
-    KwtsmsGateway.php        # API wrapper (connect, send, sync)
-    KwtsmsSender.php         # Send pipeline with guards and batching
-    KwtsmsTemplateManager.php# Template rendering and placeholder replacement
-    KwtsmsInstaller.php      # Install / uninstall logic and seed data
-    KwtsmsLogger.php         # SMS logging and dashboard stats
-    KwtsmsCron.php           # Daily sync tasks
-  controllers/
-    admin/AdminKwtsmsController.php  # Back-office UI (tabs)
-    front/cron.php                   # Public cron endpoint
-  views/
-    templates/admin/         # Smarty templates for each admin tab
-    css/admin.css            # Back-office styles
-    js/admin.js              # Tab interaction logic
-  sql/
-    install.php              # Database schema
-    uninstall.php            # Cleanup queries
-  translations/
-    en.php                   # English strings
-    ar.php                   # Arabic strings
-```
+4. Edit message templates using the available placeholders
 
 ## License
 
