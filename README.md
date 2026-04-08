@@ -19,6 +19,10 @@
 
 ---
 
+## About kwtSMS
+
+[kwtSMS](https://www.kwtsms.com) is a Kuwait-based SMS gateway providing reliable message delivery to Kuwaiti mobile numbers. It supports Arabic and English content, approved Sender IDs, OTP flows, and a simple HTTP API. This module connects your PrestaShop store to the kwtSMS platform so you can send automated SMS notifications without writing any code.
+
 ## Features
 
 | Notification | Recipient | Trigger |
