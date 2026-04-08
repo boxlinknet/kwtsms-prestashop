@@ -20,6 +20,9 @@ napkin.md
 # Documentation (local only)
 docs/
 
+# Docker (local dev environment)
+docker/
+
 # MCP Server (local tooling)
 .venv-mcp/
 prestashop-docs/
@@ -46,3 +49,6 @@ kwtsms/vendor/
 
 # PrestaShop cache
 /var/cache/
+
+# Test snapshots
+*.yaml
