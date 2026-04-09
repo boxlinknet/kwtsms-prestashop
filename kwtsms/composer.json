@@ -3,6 +3,12 @@
     "description": "kwtSMS - SMS Notifications & Alerts for PrestaShop",
     "type": "prestashop-module",
     "license": "AFL-3.0",
+    "authors": [
+        {
+            "name": "kwtSMS",
+            "email": "support@kwtsms.com"
+        }
+    ],
     "require": {
         "php": ">=7.4",
         "kwtsms/kwtsms-php": "^1.0"
@@ -11,5 +17,9 @@
         "classmap": [
             "classes/"
         ]
+    },
+    "config": {
+        "prepend-autoloader": false,
+        "preferred-install": "dist"
     }
 }
